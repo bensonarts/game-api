@@ -5,6 +5,8 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 field: 'id',
                 primaryKey: true,
+                allowNull: false,
+                autoIncrement: true,
             },
             question: {
                 type: Sequelize.INTEGER,
@@ -27,7 +29,7 @@ module.exports = (sequelize, Sequelize) => {
                 defaultValue: false,
             },
         }, {
-            tableName: 'questions',
+            tableName: 'trivia_answers',
             timestamps: true,
         }
     );

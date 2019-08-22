@@ -5,6 +5,8 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 field: 'id',
                 primaryKey: true,
+                allowNull: false,
+                autoIncrement: true,
             },
             game: {
                 type: Sequelize.INTEGER,
@@ -53,7 +55,7 @@ module.exports = (sequelize, Sequelize) => {
                 }
             ]
         }, {
-            tableName: 'players',
+            tableName: 'leaderboards',
             timestamps: true,
         }
     );

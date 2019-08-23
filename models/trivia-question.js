@@ -26,7 +26,6 @@ module.exports = (sequelize, Sequelize) => {
                 defaultValue: true,
             },
         }, {
-            tableName: 'trivia_questions',
             timestamps: true,
         }
     );

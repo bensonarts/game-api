@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
+    "express-validator": "^6.1.1",
     "graylog2": "^0.2.1",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",

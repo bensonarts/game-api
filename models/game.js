@@ -15,7 +15,6 @@ module.exports = (sequelize, Sequelize) => {
                 unique: true,
             },
         }, {
-            tableName: 'games',
             timestamps: true,
         }
     );

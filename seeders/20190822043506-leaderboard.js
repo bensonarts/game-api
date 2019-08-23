@@ -2,17 +2,17 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-      return queryInterface.bulkInsert('leaderboards', [{
-        player_id: 1,
-        game_id: 1,
+      return queryInterface.bulkInsert('Leaderboards', [{
+        player: 1,
+        game: 1,
         score: 100,
-        time_period_from: new Date(),
-        created_at: new Date(),
-        updated_at: new Date(),
+        timePeriodFrom: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       }], {});
   },
 
   down: (queryInterface, Sequelize) => {
-      return queryInterface.bulkDelete('leaderboards', null, {});
+      return queryInterface.bulkDelete('Leaderboards', null, {});
   }
 };

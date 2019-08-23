@@ -3,7 +3,7 @@
 import models from '../models';
 
 module.exports = (sequelize, Sequelize) => {
-    const TriviaAnswer = sequelize.define('TriviaAnswer', {
+    const PlayerAnswer = sequelize.define('PlayerAnswer', {
             id: {
                 type: Sequelize.INTEGER,
                 field: 'id',
@@ -21,20 +21,43 @@ module.exports = (sequelize, Sequelize) => {
                 }
             },
             answer: {
-                type: Sequelize.STRING,
-                field: 'answer',
+                type: Sequelize.INTEGER,
                 allowNull: false,
+                references: {
+                    model: models.TriviaAnswer,
+                    key: 'id',
+                    field: 'trivia_answer_id',
+                }
+            },
+            player: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: models.player,
+                    key: 'id',
+                    field: 'player_id',
+                }
             },
             correct: {
                 type: Sequelize.BOOLEAN,
-                field: 'correct',
                 allowNull: false,
                 defaultValue: false,
+                field: 'correct',
             },
+        }, {
+            indexes: [
+                {
+                    name: 'player_answer_correct_idx',
+                    unique: false,
+                    fields: [
+                        'correct',
+                    ]
+                }
+            ]
         }, {
             timestamps: true,
         }
     );
 
-    return TriviaAnswer;
+    return PlayerAnswer;
 };

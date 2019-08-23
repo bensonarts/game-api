@@ -1,27 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('leaderboards', {
+    return queryInterface.createTable('Leaderboards', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        field: 'id',
         primaryKey: true,
       },
       game: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        field: 'game_id',
       },
       player: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        field: 'player_id',
       },
       score: {
         type: Sequelize.INTEGER,
-        field: 'score',
         allowNull: false,
         defaultValue: 0,
       },
@@ -29,71 +25,67 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         defaultValue: 0,
-        field: 'time_period',
       },
       timePeriodFrom: {
         type: Sequelize.DATE,
         allowNull: false,
-        field: 'time_period_from',
       },
       createdAt: {
         type: Sequelize.DATE,
-        field: 'created_at',
       },
       updatedAt: {
         type: Sequelize.DATE,
-        field: 'updated_at',
       },
     }).then(() => queryInterface.addIndex(
-        'leaderboards',
+        'Leaderboards',
         [
           'score',
-          'time_period',
-          'time_period_from',
+          'timePeriod',
+          'timePeriodFrom',
         ],
         {
-          name: 'score_time_period_idx',
+          name: 'scoreTimePeriodIdx',
         }
       )
     ).then(() => queryInterface.addIndex(
-        'leaderboards',
+        'Leaderboards',
         [
-          'game_id',
+          'game',
         ],
         {
-          name: 'game_idx',
+          name: 'gameIdx',
         }
       )
     ).then(() => queryInterface.addIndex(
-        'leaderboards',
+        'Leaderboards',
         [
-          'player_id',
+          'player',
         ],
         {
-          name: 'player_idx',
+          name: 'playerIdx',
         }
       )
     ).then(() => queryInterface.addConstraint(
-        'leaderboards',
-        ['game_id'],
+        'Leaderboards',
+        ['game'],
         {
           type: 'foreign key',
-          name: 'game_id_fk',
+          name: 'gameIdFk',
           references: {
-            table: 'games',
+            table: 'Games',
             field: 'id'
           },
           onDelete: 'cascade',
           onUpdate: 'cascade',
         }
     )).then(() => queryInterface.addConstraint(
-        'leaderboards',
-        ['player_id'],
+        'Leaderboards',
+        ['player'],
         {
           type: 'foreign key',
-          name: 'player_id_fk',
+          name: 'playerIdFk',
           references: {
-            table: 'players',
+            table: 'Players',
             field: 'id'
           },
           onDelete: 'cascade',
@@ -102,6 +94,6 @@ module.exports = {
     ))
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('games');
+    return queryInterface.dropTable('Leaderboardss');
   }
 };

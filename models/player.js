@@ -21,7 +21,6 @@ module.exports = (sequelize, Sequelize) => {
                 defaultValue: true,
             },
         }, {
-            tableName: 'players',
             timestamps: true,
         }
     );

@@ -2,14 +2,14 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('games', [{
+    return queryInterface.bulkInsert('Games', [{
       name: 'Science Trivia',
-      created_at: new Date(),
-      updated_at: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     }], {});
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('games', null, {});
+    return queryInterface.bulkDelete('Games', null, {});
   }
 };

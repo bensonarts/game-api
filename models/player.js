@@ -1,4 +1,7 @@
 'use strict';
+
+import PlayerAnswer from './player-answer';
+
 module.exports = (sequelize, Sequelize) => {
     const Player = sequelize.define('Player', {
             id: {

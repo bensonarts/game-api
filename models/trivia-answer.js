@@ -1,6 +1,6 @@
 'use strict';
 
-import models from '../models';
+import TriviaQuestion from './trivia-question';
 
 module.exports = (sequelize, Sequelize) => {
     const TriviaAnswer = sequelize.define('TriviaAnswer', {
@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: models.TriviaQuestion,
+                    model: TriviaQuestion,
                     key: 'id',
                     field: 'trivia_question_id',
                 }
@@ -35,6 +35,8 @@ module.exports = (sequelize, Sequelize) => {
             timestamps: true,
         }
     );
+
+    // TriviaAnswer.belongsTo(TriviaQuestion);
 
     return TriviaAnswer;
 };

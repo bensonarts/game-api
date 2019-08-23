@@ -1,6 +1,7 @@
 'use strict';
 
-import models from '../models';
+import Game from './game';
+import Player from './player';
 
 module.exports = (sequelize, Sequelize) => {
     const Leaderboard = sequelize.define('Leaderboard', {
@@ -15,7 +16,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: models.Game,
+                    model: Game,
                     key: 'id',
                     field: 'game_id',
                 }
@@ -24,7 +25,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: models.Player,
+                    model: Player,
                     key: 'id',
                     field: 'player_id',
                 }

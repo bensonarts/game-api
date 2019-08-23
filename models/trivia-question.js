@@ -1,4 +1,7 @@
 'use strict';
+
+import TriviaAnswer from './trivia-answer';
+
 module.exports = (sequelize, Sequelize) => {
     const TriviaQuestion = sequelize.define('TriviaQuestion', {
             id: {
@@ -29,6 +32,8 @@ module.exports = (sequelize, Sequelize) => {
             timestamps: true,
         }
     );
+
+    // TriviaQuestion.hasMany(TriviaAnswer);
 
     return TriviaQuestion;
 };

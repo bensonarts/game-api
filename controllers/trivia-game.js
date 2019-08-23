@@ -10,6 +10,8 @@ export default () => {
      * Get random question
      */
     triviaApi.get('/:gameId/:category/questions', (req, res) => {
+        models.TriviaAnswer.belongsTo(models.TriviaQuestion, {foreignKey: 'question'});
+        models.TriviaQuestion.hasMany(models.TriviaAnswer, {foreignKey: 'question'});
         models.TriviaQuestion.findOne({
             where: {
                 category: req.params.category,
@@ -18,6 +20,10 @@ export default () => {
                 Sequelize.fn('RAND'),
             ],
             attributes: ['id', 'category', 'question'],
+            include: [{
+                model: models.TriviaAnswer,
+                attributes: ['id', 'answer'],
+            }],
         }).then(question => {
             res.json(question);
         }).catch(error => {

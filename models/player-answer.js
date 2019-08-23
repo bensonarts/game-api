@@ -1,6 +1,8 @@
 'use strict';
 
-import models from '../models';
+import Player from './player';
+import TriviaAnswer from './trivia-answer';
+import TriviaQuestion from './trivia-question';
 
 module.exports = (sequelize, Sequelize) => {
     const PlayerAnswer = sequelize.define('PlayerAnswer', {
@@ -15,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: models.TriviaQuestion,
+                    model: TriviaQuestion,
                     key: 'id',
                     field: 'trivia_question_id',
                 }
@@ -24,7 +26,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: models.TriviaAnswer,
+                    model: TriviaAnswer,
                     key: 'id',
                     field: 'trivia_answer_id',
                 }
@@ -33,7 +35,7 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 references: {
-                    model: models.player,
+                    model: Player,
                     key: 'id',
                     field: 'player_id',
                 }

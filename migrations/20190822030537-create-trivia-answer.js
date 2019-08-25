@@ -21,6 +21,11 @@ module.exports = {
         allowNull: false,
         defaultValue: false,
       },
+      totalChosen: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
       createdAt: {
         type: Sequelize.DATE,
       },

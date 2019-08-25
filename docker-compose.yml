@@ -19,7 +19,7 @@ services:
             - DW_DB_HOST=game_api_mysql
             - DW_DB_USER=root
             - DW_DB_PASSWORD=
-            - DW_DB_NAME=games
+            - DW_DB_NAME=game_api_development
             - GELF_HOSTNAME=127.0.0.1
             - GELF_PORT=12201
             - NEW_RELIC_LICENSE_KEY=

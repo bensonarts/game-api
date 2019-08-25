@@ -20,6 +20,16 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: true,
       },
+      totalCorrect: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
+      totalWrong: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
       createdAt: {
         type: Sequelize.DATE,
       },

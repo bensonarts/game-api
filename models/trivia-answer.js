@@ -31,6 +31,11 @@ module.exports = (sequelize, Sequelize) => {
                 allowNull: false,
                 defaultValue: false,
             },
+            totalChosen: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+                defaultValue: 0,
+            },
         }, {
             timestamps: true,
         }

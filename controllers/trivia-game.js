@@ -46,7 +46,6 @@ export default () => {
             where: {
                 id: req.params.id,
             },
-            attributes: ['id']
         }).then(question => {
             models.Player.findOne({
                 where: {
@@ -59,8 +58,25 @@ export default () => {
                     where: {
                         id: answerId,
                     },
-                    attributes: ['id', 'correct'],
                 }).then(answer => {
+                    const isCorrect = answer.dataValues.correct;
+                    console.log('is correct? ' + isCorrect);
+                    console.log(question.dataValues.totalCorrect, question.dataValues.totalWrong, answer.dataValues.totalChosen);
+                    console.log(question);
+                    let {totalCorrect, totalWrong} = question.dataValues;
+                    if (isCorrect) {
+                        ++totalCorrect;
+                        question.update({totalCorrect});
+                    } else {
+                        ++totalWrong;
+                        question.update({totalWrong});
+                    }
+
+                    let totalChosen = answer.dataValues.totalChosen;
+                    ++totalChosen;
+
+                    answer.update({totalChosen});
+                    
                     models.PlayerAnswer.create({
                         player: player.dataValues.id,
                         question: question.dataValues.id,

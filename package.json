@@ -1,7 +1,7 @@
 {
-  "name": "dw-web-api",
+  "name": "game-api",
   "version": "1.0.0",
-  "description": "RESTful API for interacting with the data warehouse replica",
+  "description": "RESTful API for StrikeBit.io games",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

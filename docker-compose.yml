@@ -1,6 +1,6 @@
 version: '3'
 services:
-    dwapi:
+    game_api:
         build:
             context: .
         image: bensonarts/gameapi
@@ -10,7 +10,7 @@ services:
         ports:
             - '3000:3000'
         links:
-            - dw_api_mysql
+            - game_api_mysql
         environment:
             - VIRTUAL_PROTO=http
             - VIRTUAL_HOST=game-api.loc
@@ -29,7 +29,7 @@ services:
         healthcheck:
             test: 'mysqladmin --no-beep ping'
         ports:
-            - '3306'
+            - '3306:3306'
         environment:
             - MYSQL_DATABASE=games
             - MYSQL_ROOT_PASSWORD=

@@ -16,10 +16,11 @@ services:
             - VIRTUAL_HOST=game-api.loc
             - VIRTUAL_PORT=3000
             - NODE_ENV=development
-            - DW_DB_HOST=game_api_mysql
-            - DW_DB_USER=root
-            - DW_DB_PASSWORD=
-            - DW_DB_NAME=game_api_development
+            - DB_HOST=game_api_mysql
+            - DB_USER=root
+            - DB_PASSWORD=
+            - DB_NAME=game_api_development
+            - DB_PORT=3310
             - GELF_HOSTNAME=127.0.0.1
             - GELF_PORT=12201
             - NEW_RELIC_LICENSE_KEY=
@@ -29,9 +30,9 @@ services:
         healthcheck:
             test: 'mysqladmin --no-beep ping'
         ports:
-            - '3306:3306'
+            - '3310:3306'
         environment:
-            - MYSQL_DATABASE=games
+            - MYSQL_DATABASE=game_api_development
             - MYSQL_ROOT_PASSWORD=
             - MYSQL_ALLOW_EMPTY_PASSWORD=yes
 

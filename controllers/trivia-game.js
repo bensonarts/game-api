@@ -19,10 +19,10 @@ export default () => {
             order: [
                 Sequelize.fn('RAND'),
             ],
-            attributes: ['id', 'category', 'question'],
+            attributes: ['id', 'category', 'question', 'totalCorrect', 'totalWrong'],
             include: [{
                 model: models.TriviaAnswer,
-                attributes: ['id', 'answer'],
+                attributes: ['id', 'answer', 'totalChosen'],
             }],
         }).then(question => {
             res.json(question);

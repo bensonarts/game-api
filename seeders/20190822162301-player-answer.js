@@ -7,6 +7,7 @@ module.exports = {
             question: 1,
             answer: 2,
             correct: true,
+            points: 10,
             createdAt: new Date(),
             updatedAt: new Date(),
         }], {});

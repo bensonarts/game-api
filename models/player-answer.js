@@ -8,7 +8,6 @@ module.exports = (sequelize, Sequelize) => {
     const PlayerAnswer = sequelize.define('PlayerAnswer', {
             id: {
                 type: Sequelize.INTEGER,
-                field: 'id',
                 primaryKey: true,
                 allowNull: false,
                 autoIncrement: true,
@@ -19,7 +18,6 @@ module.exports = (sequelize, Sequelize) => {
                 references: {
                     model: TriviaQuestion,
                     key: 'id',
-                    field: 'trivia_question_id',
                 }
             },
             answer: {
@@ -28,7 +26,6 @@ module.exports = (sequelize, Sequelize) => {
                 references: {
                     model: TriviaAnswer,
                     key: 'id',
-                    field: 'trivia_answer_id',
                 }
             },
             player: {
@@ -37,14 +34,17 @@ module.exports = (sequelize, Sequelize) => {
                 references: {
                     model: Player,
                     key: 'id',
-                    field: 'player_id',
                 }
             },
             correct: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
                 defaultValue: false,
-                field: 'correct',
+            },
+            points: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                defaultValue: 0,
             },
         }, {
             indexes: [

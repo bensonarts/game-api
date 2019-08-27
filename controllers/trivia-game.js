@@ -7,9 +7,10 @@ export default () => {
     let triviaApi = Router();
 
     /**
-     * Get random question
+     * Get random question by game ID and category
      */
     triviaApi.get('/:gameId/:category/questions', (req, res) => {
+        // TODO Refactor me. Move model relationships out of controller.
         models.TriviaAnswer.belongsTo(models.TriviaQuestion, {foreignKey: 'question'});
         models.TriviaQuestion.hasMany(models.TriviaAnswer, {foreignKey: 'question'});
         models.TriviaQuestion.findOne({
@@ -31,10 +32,14 @@ export default () => {
         });
     });
 
+    /**
+     * Answer trivia question
+     */
     triviaApi.post('/:gameId/questions/:id/answer', [
         check('playerId').isInt(),
         check('answerId').isInt()
     ], (req, res) => {
+        // TODO Refactor nasty chaining. Look into async await.
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({ errors: errors.array() });
@@ -60,9 +65,6 @@ export default () => {
                     },
                 }).then(answer => {
                     const isCorrect = answer.dataValues.correct;
-                    console.log('is correct? ' + isCorrect);
-                    console.log(question.dataValues.totalCorrect, question.dataValues.totalWrong, answer.dataValues.totalChosen);
-                    console.log(question);
                     let {totalCorrect, totalWrong} = question.dataValues;
                     if (isCorrect) {
                         ++totalCorrect;
@@ -82,10 +84,20 @@ export default () => {
                         question: question.dataValues.id,
                         answer: answer.dataValues.id,
                         correct: answer.dataValues.correct,
+                        points: question.dataValues.points,
                     }).then(() => {
-                        res.status(200);
-                        res.json({
-                            correct: answer.dataValues.correct,
+                        // TODO Increase user's score.
+                        models.TriviaAnswer.findOne({
+                            where: {
+                                correct: true,
+                                question: question.dataValues.id,
+                            }
+                        }).then(correctAnswer => {
+                            res.status(200);
+                            res.json({
+                                correct: answer.dataValues.correct,
+                                correctAnswer,
+                            });
                         });
                     }).catch(error => {
                         res.status(500);

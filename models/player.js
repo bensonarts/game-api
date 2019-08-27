@@ -6,20 +6,22 @@ module.exports = (sequelize, Sequelize) => {
     const Player = sequelize.define('Player', {
             id: {
                 type: Sequelize.INTEGER,
-                field: 'id',
                 primaryKey: true,
                 allowNull: false,
                 autoIncrement: true,
             },
             username: {
                 type: Sequelize.STRING,
-                field: 'username',
                 allowNull: false,
                 unique: true,
             },
+            lifetimePoints: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                defaultValue: 0,
+            },
             enabled: {
                 type: Sequelize.BOOLEAN,
-                field: 'enabled',
                 allowNull: false,
                 defaultValue: true,
             },

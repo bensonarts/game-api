@@ -22,12 +22,17 @@ module.exports = (sequelize, Sequelize) => {
             },
             totalCorrect: {
                 type: Sequelize.INTEGER,
-                allowNull: true,
+                allowNull: false,
                 defaultValue: 0,
             },
             totalWrong: {
                 type: Sequelize.INTEGER,
-                allowNull: true,
+                allowNull: false,
+                defaultValue: 0,
+            },
+            points: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
                 defaultValue: 0,
             },
             enabled: {

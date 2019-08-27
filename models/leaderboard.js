@@ -7,7 +7,6 @@ module.exports = (sequelize, Sequelize) => {
     const Leaderboard = sequelize.define('Leaderboard', {
             id: {
                 type: Sequelize.INTEGER,
-                field: 'id',
                 primaryKey: true,
                 allowNull: false,
                 autoIncrement: true,
@@ -18,7 +17,6 @@ module.exports = (sequelize, Sequelize) => {
                 references: {
                     model: Game,
                     key: 'id',
-                    field: 'game_id',
                 }
             },
             player: {
@@ -27,7 +25,6 @@ module.exports = (sequelize, Sequelize) => {
                 references: {
                     model: Player,
                     key: 'id',
-                    field: 'player_id',
                 }
             },
             score: {
@@ -39,12 +36,10 @@ module.exports = (sequelize, Sequelize) => {
                 type: Sequelize.INTEGER,
                 allowNull: false,
                 defaultValue: 0,
-                field: 'time_period',
             },
             timePeriodFrom: {
                 type: Sequelize.DATE,
                 allowNull: false,
-                field: 'time_period_from',
             },
         }, {
             indexes: [
@@ -53,8 +48,8 @@ module.exports = (sequelize, Sequelize) => {
                     unique: false,
                     fields: [
                         'score',
-                        'time_period',
-                        'time_period_from',
+                        'timePeriod',
+                        'timePeriodFrom',
                     ]
                 }
             ]

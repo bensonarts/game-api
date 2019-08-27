@@ -18,6 +18,11 @@ module.exports = {
         allowNull: false,
         defaultValue: true,
       },
+      lifetimePoints: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
+      },
       createdAt: {
         type: Sequelize.DATE,
       },

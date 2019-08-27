@@ -6,6 +6,7 @@ module.exports = {
       username: 'joblaster',
       createdAt: new Date(),
       updatedAt: new Date(),
+      lifetimePoints: 112,
     }], {});
   },
 

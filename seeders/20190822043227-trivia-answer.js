@@ -25,7 +25,7 @@ module.exports = {
           updatedAt: new Date(),
       }, {
           question: 1,
-          answer: '500 thousand miles',
+          answer: '500 thousand mi',
           correct: false,
           totalChosen: 58,
           createdAt: new Date(),

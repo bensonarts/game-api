@@ -20,7 +20,7 @@ services:
             - DB_USER=root
             - DB_PASSWORD=
             - DB_NAME=game_api_development
-            - DB_PORT=3310
+            - DB_PORT=3306
             - GELF_HOSTNAME=127.0.0.1
             - GELF_PORT=12201
             - NEW_RELIC_LICENSE_KEY=

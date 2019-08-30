@@ -11,8 +11,8 @@ docker-compose up -d
 ### Run migrations and import seed data
 
 ```bash
-node_modules/.bin/sequelize db:migrate
-node_modules/.bin/sequelize db:seed:all
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
 ```
 
 ### Usage 

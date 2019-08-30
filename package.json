@@ -5,24 +5,17 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
-    "serve": "nodemon server.js --exec babel-node",
-    "start": "node dist/server.js"
+    "serve": "nodemon server.js --exec babel-node"
   },
   "author": "Aaron Benson",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
     "express-validator": "^6.1.1",
-    "graylog2": "^0.2.1",
-    "morgan": "^1.9.0",
-    "mysql": "^2.15.0",
-    "mysql2": "^1.5.3",
+    "mysql2": "^1.6.5",
     "nodemon": "^1.17.2",
-    "rimraf": "^2.6.2",
-    "sequelize": "^4.37.6",
-    "sequelize-cli": "^5.5.0",
-    "sql-fixtures": "^1.0.0"
+    "sequelize": "^5.16.0",
+    "sequelize-cli": "^5.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

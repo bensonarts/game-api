@@ -1,8 +1,8 @@
 import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
-import api from './controllers';
-import triviaApi from './controllers/trivia-game';
+import api from './routes';
+import triviaApi from './routes/trivia-game';
 import morgan from 'morgan';
 
 let app = express();

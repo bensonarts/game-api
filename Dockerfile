@@ -11,23 +11,13 @@ RUN apk add --update --no-cache -q \
         curl \
         gnupg \
 
-    # clean up
-    && rm -rf /tmp/* /var/cache/apk/* /var/www/*
-
 COPY .docker/.bashrc /root/
-COPY .docker/entrypoint.sh /
 COPY package.json yarn.lock ./
-
-RUN yarn install --non-interactive --production=false
 
 COPY . ./
 
-RUN yarn build \
-    && yarn install --non-interactive --production=true \
-    && yarn cache clean
+RUN yarn yarn install --non-interactive --production=true
 
 EXPOSE 3000
 
-ENTRYPOINT ["/entrypoint.sh"]
-
-CMD ["yarn", "start"]
+CMD ["yarn", "serve"]

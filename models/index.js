@@ -1,48 +1,19 @@
-'use strict';
+import sequelize from './sequelize-index';
+import Game from './game';
+import Leaderboard from './leaderboard';
+import Player from './player';
+import PlayerAnswer from './player-answer';
+import TriviaAnswer from './trivia-answer';
+import TriviaQuestion from './trivia-question';
 
-import fs from 'fs';
-import path from 'path';
-import Sequelize from 'sequelize';
+Game.hasMany(TriviaQuestion);
+TriviaAnswer.belongsTo(TriviaQuestion);
+Leaderboard.belongsTo(Game);
+Leaderboard.belongsTo(Player);
+Player.hasMany(PlayerAnswer);
+PlayerAnswer.belongsTo(Player);
+PlayerAnswer.belongsTo(TriviaQuestion);
+PlayerAnswer.belongsTo(TriviaAnswer);
+TriviaQuestion.hasMany(TriviaAnswer);
 
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
-
-let sequelize;
-
-/*
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
- */
-sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: 'mysql',
-});
-
-// sequelize = new Sequelize(config.database, config.username, config.password, config);
-
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
-
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
-module.exports = db;
+module.exports = {Game, LeaderBoard, Player, PlayerAnswer, TriviaAnswer, TriviaQuestion};

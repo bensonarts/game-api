@@ -3,7 +3,7 @@
     "username": "root",
     "password": null,
     "database": "game_api_development",
-    "host": "game_api_mysql",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false,
     "port": "3310"

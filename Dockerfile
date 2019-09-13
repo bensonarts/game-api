@@ -22,9 +22,8 @@ RUN yarn install --non-interactive --production=false
 
 COPY . ./
 
-RUN yarn build \
-    && yarn install --non-interactive --production=true \
-    && yarn cache clean
+RUN yarn install --non-interactive --production=true \
+    && yarn start
 
 EXPOSE 3000
 
